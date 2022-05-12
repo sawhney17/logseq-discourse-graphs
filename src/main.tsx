@@ -6,6 +6,7 @@ import * as ReactDOM from "react-dom/client";
 import App from "./App";
 
 import { logseq as PL } from "../package.json";
+import { handleContext } from "./utils";
 
 // @ts-expect-error
 const css = (t, ...args) => String.raw(t, ...args);
@@ -54,6 +55,9 @@ function main() {
     template: `
       <div data-on-click="show" class="${openIconName}">⚙️</div>
     `,
+  });
+  logseq.App.onRouteChanged((e) => {
+    handleContext(e);
   });
 }
 
