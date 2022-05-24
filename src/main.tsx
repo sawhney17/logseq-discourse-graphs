@@ -7,7 +7,7 @@ import App from "./App";
 
 import { logseq as PL } from "../package.json";
 import { handleContext } from "./utils";
-import { insertTemplatedBlock } from "./smartblocks";
+import { insertTemplateOnPage } from "./smartblocks";
 
 const css = (t, ...args) => String.raw(t, ...args);
 
@@ -16,7 +16,7 @@ const pluginId = PL.id;
 function main() {
   console.info(`#${pluginId}: MAIN`);
   const root = ReactDOM.createRoot(document.getElementById("app")!);
-  insertTemplatedBlock("f54cbb22-4fbc-4661-840a-8e6549064b41", "randomTemplate", true ,"")
+  insertTemplateOnPage("Hello", "randomTemplate") // the code to insert a template named randomTemplate onto a page called hello
   root.render(
     <React.StrictMode>
       <App />
@@ -27,8 +27,8 @@ function main() {
     return {
       show() {
         logseq.showMainUI();
+        insertTemplateOnPage("Hello", "randomTemplate")
       },
-
       
     };
   }

@@ -41,7 +41,10 @@ export function valueZero() {
 // async function main() {
   // updateTemplates();
 
-  export async function insertTemplatedBlock(
+  export async function insertTemplateOnPage(pageName: string, templateName: string){
+    insertTemplatedBlock("", templateName, true,  pageName)
+  }
+  async function insertTemplatedBlock(
     blockUuid: any,
     template: string,
     sibling: boolean,
