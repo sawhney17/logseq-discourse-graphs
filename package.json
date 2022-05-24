@@ -10,9 +10,13 @@
   "license": "MIT",
   "dependencies": {
     "@logseq/libs": "^0.0.5",
+    "axios": "^0.27.2",
+    "logseq-dateutils": "^0.0.21",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-use": "^17.3.2"
+    "react-tooltip": "^4.2.21",
+    "react-use": "^17.3.2",
+    "sherlockjs": "^1.4.2"
   },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.1",

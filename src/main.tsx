@@ -7,8 +7,8 @@ import App from "./App";
 
 import { logseq as PL } from "../package.json";
 import { handleContext } from "./utils";
+import { insertTemplatedBlock } from "./smartblocks";
 
-// @ts-expect-error
 const css = (t, ...args) => String.raw(t, ...args);
 
 const pluginId = PL.id;
@@ -16,7 +16,7 @@ const pluginId = PL.id;
 function main() {
   console.info(`#${pluginId}: MAIN`);
   const root = ReactDOM.createRoot(document.getElementById("app")!);
-
+  insertTemplatedBlock("f54cbb22-4fbc-4661-840a-8e6549064b41", "randomTemplate", true ,"")
   root.render(
     <React.StrictMode>
       <App />
@@ -28,6 +28,8 @@ function main() {
       show() {
         logseq.showMainUI();
       },
+
+      
     };
   }
 
