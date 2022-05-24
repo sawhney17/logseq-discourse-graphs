@@ -1,7 +1,10 @@
 {
-  "name": "logseq-plugin-template-react",
+  "name": "logseq-discourse",
+  "description": "Knowledge synthesis framework",
   "version": "0.0.0",
   "main": "dist/index.html",
+  "keywords": [],
+  "author": "Aryan Sawhney, Alex Qwxlea",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -37,7 +40,7 @@
     "windicss": "3.5.1"
   },
   "logseq": {
-    "id": "_pengx17-logseq-template-react",
+    "id": "logseq-discourse",
     "icon": "./logo.svg"
   }
 }

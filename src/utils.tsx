@@ -4,6 +4,15 @@ import ReactDOM from "react-dom";
 import { useMountedState } from "react-use";
 import DiscourseContext from "./discourseContext";
 
+import "@logseq/libs";
+import {
+  BlockEntity,
+  BlockPageName,
+  BlockUUID,
+  ILSPluginUser,
+  PageEntity,
+} from "@logseq/libs/dist/LSPlugin";
+
 export const useAppVisible = () => {
   const [visible, setVisible] = useState(logseq.isMainUIVisible);
   const isMounted = useMountedState();
@@ -47,4 +56,22 @@ export const handleContext = (e: IHookEvent) => {
     top?.document.getElementById("references23")!
   )}, 500)
   
+}
+
+//Source: https://github.com/vipzhicheng/logseq-plugin-vim-shortcuts/blob/master/src/common/funcs.ts
+//FIXME null needed?
+export async function createPageIfNotExists(pageName:string): Promise<PageEntity|null> {
+  let page = await logseq.Editor.getPage(pageName);
+  if (!page) {
+    page = await logseq.Editor.createPage(
+      pageName,
+      {},
+      {
+        createFirstBlock: true,
+        redirect: false,
+      }
+    );
+  }
+
+  return page;
 }

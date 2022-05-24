@@ -4,9 +4,12 @@ import "virtual:windi.css";
 import React from "react";
 import * as ReactDOM from "react-dom/client";
 import App from "./App";
+import Popup from "./Popup";
 
 import { logseq as PL } from "../package.json";
 import { handleContext } from "./utils";
+import { colorpage } from "./cssutils"
+
 
 // @ts-expect-error
 const css = (t, ...args) => String.raw(t, ...args);
@@ -59,6 +62,31 @@ function main() {
   logseq.App.onRouteChanged((e) => {
     handleContext(e);
   });
+  //menu-popup
+  const registerKeyHeading = () => logseq.App.registerCommandPalette(
+    {
+      key: `testing_z`,
+      label: `Testing 1,2,3`,
+      keybinding: {
+        mode: 'global',
+        binding: 'mod+shift+l'
+      },
+    },
+    async () => {
+      console.log("DB wooo")
+      logseq.showMainUI();
+      const currBlock = await logseq.Editor.getCurrentBlock();
+      console.log("DB currBlock", currBlock)
+      const blockLocation = await logseq.Editor.queryElementRect(`div[blockid="${currBlock?.uuid}"]`)
+      console.log("DB blockLocation", blockLocation)
+          root.render(
+        <React.StrictMode>
+          {/* @ts-ignore */}
+        <Popup currBlockInfo={[currBlock, blockLocation]} />
+        </React.StrictMode>
+      );
+    });
+    registerKeyHeading()
 }
 
 logseq.ready(main).catch(console.error);
