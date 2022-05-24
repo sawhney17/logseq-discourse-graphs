@@ -42,38 +42,38 @@ async function parseRandomly(pageName: string) {
 //   }
 //   return `${temperature}°${emojiArray[data.weather[0].main]}`;
 // }
-function parseConditional(condition: string, value: number) {
-  switch (condition) {
-    case "dayofweek":
-      if (new Date().getDay() == value) {
-        return "Success";
-      } else if (new Date().getDay() == 0 && value == 7) {
-        return "Success";
-      } else {
-        return "Error";
-      }
-    case "dayofmonth":
-      if (new Date().getDate() == value) {
-        return "Success";
-      } else {
-        return "Error";
-      }
-    case "month":
-      if (new Date().getMonth() == value) {
-        return "Success";
-      } else {
-        return "Error";
-      }
-    case "dayofyear":
-      if (new Date().getDate() == value) {
-        return "Success";
-      } else {
-        return "Error";
-      }
-    default:
-      return "Error";
-  }
-}
+// function parseConditional(condition: string, value: number) {
+//   switch (condition) {
+//     case "dayofweek":
+//       if (new Date().getDay() == value) {
+//         return "Success";
+//       } else if (new Date().getDay() == 0 && value == 7) {
+//         return "Success";
+//       } else {
+//         return "Error";
+//       }
+//     case "dayofmonth":
+//       if (new Date().getDate() == value) {
+//         return "Success";
+//       } else {
+//         return "Error";
+//       }
+//     case "month":
+//       if (new Date().getMonth() == value) {
+//         return "Success";
+//       } else {
+//         return "Error";
+//       }
+//     case "dayofyear":
+//       if (new Date().getDate() == value) {
+//         return "Success";
+//       } else {
+//         return "Error";
+//       }
+//     default:
+//       return "Error";
+//   }
+// }
 
 // export function parseVariablesOne(template) {}
 export async function parseDynamically(blockContent: String) {
