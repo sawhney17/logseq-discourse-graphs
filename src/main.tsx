@@ -10,8 +10,8 @@ import { logseq as PL } from "../package.json";
 import { handleContext } from "./utils";
 import { colorpage } from "./cssutils"
 
+import { insertTemplateOnPage } from "./smartblocks";
 
-// @ts-expect-error
 const css = (t, ...args) => String.raw(t, ...args);
 
 const pluginId = PL.id;
@@ -19,7 +19,7 @@ const pluginId = PL.id;
 function main() {
   console.info(`#${pluginId}: MAIN`);
   const root = ReactDOM.createRoot(document.getElementById("app")!);
-
+  insertTemplateOnPage("Hello", "randomTemplate") // the code to insert a template named randomTemplate onto a page called hello
   root.render(
     <React.StrictMode>
       <App />
@@ -30,7 +30,9 @@ function main() {
     return {
       show() {
         logseq.showMainUI();
+        insertTemplateOnPage("Hello", "randomTemplate")
       },
+      
     };
   }
 
