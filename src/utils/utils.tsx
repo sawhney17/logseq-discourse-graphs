@@ -2,7 +2,7 @@ import { IHookEvent } from "@logseq/libs/dist/LSPlugin.user";
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { useMountedState } from "react-use";
-import DiscourseContext from "./discourseContext";
+import DiscourseContext from "../discourseContext";
 
 import "@logseq/libs";
 import {
@@ -72,6 +72,31 @@ export async function createPageIfNotExists(pageName:string): Promise<PageEntity
       }
     );
   }
-
+  // console.log("DB createPageIfNotExists", page)
   return page;
 }
+
+// export const getCurrentPage = async () => {
+//   let page = await logseq.Editor.getCurrentPage();
+
+//   if (!page) {
+//     let blockUUID = await getCurrentBlockUUID();
+//     if (blockUUID) {
+//       let block = await logseq.Editor.getBlock(blockUUID);
+//       if (block?.page.id) {
+//         page = await logseq.Editor.getPage(block.page.id);
+//       }
+//     }
+//   }
+
+//   if (page?.name) {
+//     tempCache.lastPage = page.name;
+//   }
+//   return page;
+// };
+
+export const getCurrentBlockUUID = async (): Promise<BlockUUID | undefined> => {
+  let block = await logseq.Editor.getCurrentBlock();
+  return block?.uuid;
+};
+

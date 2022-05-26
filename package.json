@@ -1,10 +1,6 @@
 {
-<<<<<<< HEAD
   "name": "logseq-discourse",
   "description": "Knowledge synthesis framework",
-=======
-  "name": "logseq-discourse-graphs",
->>>>>>> master
   "version": "0.0.0",
   "main": "dist/index.html",
   "keywords": [],
