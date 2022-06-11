@@ -44,7 +44,7 @@ export const handleContext = () => {
 
   const root = ReactDOM.createRoot(top?.document.getElementById("references23")!);
   // insertTemplateOnPage("Hello", "randomTemplate") // the code to insert a template named randomTemplate onto a page called hello
-  
+
   root.render(
     <React.StrictMode>
       <DiscourseContext />
@@ -52,17 +52,20 @@ export const handleContext = () => {
   )
 }
 
-export const returnQueries = async() => {
+export const returnQueries = async () => {
   const queries: LabeledValue[] = [];
   const returnedValue: returnedQuery[] = [];
   queries.forEach(async query => {
     const results = await logseq.DB.datascriptQuery(query.query)
     if (results.length > 0) {
-      returnedValue.push({connection: query.connection, value: results})
+      returnedValue.push({ connection: query.connection, value: results })
     }
   })
   //Returns an array
-  return returnedValue
+  return [{ connection: "informed by", value: [{name: "hello"}, {name: "bye"}, {name: "what's up"}] }, { connection: "connected to", value: [{name: "hello"}, {name: "bye"}, {name: "what's up"}] }]
+  // return returnedValue
+
+  
 }
 
 interface LabeledValue {

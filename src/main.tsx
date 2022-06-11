@@ -7,7 +7,7 @@ import App from "./App";
 
 import { logseq as PL } from "../package.json";
 import { handleContext } from "./utils";
-import { insertTemplateOnPage } from "./smartblocks";
+
 
 const css = (t, ...args) => String.raw(t, ...args);
 
@@ -15,8 +15,10 @@ const pluginId = PL.id;
 
 function main() {
   console.info(`#${pluginId}: MAIN`);
+  console.log("JHKJHjk")
   const root = ReactDOM.createRoot(document.getElementById("app")!);
-  insertTemplateOnPage("Hello", "randomTemplate") // the code to insert a template named randomTemplate onto a page called hello
+  // insertTemplateOnPage("Hello", "randomTemplate") // the code to insert a template named randomTemplate onto a page called hello
+  
   root.render(
     <React.StrictMode>
       <App />
@@ -26,8 +28,9 @@ function main() {
   function createModel() {
     return {
       show() {
-        logseq.showMainUI();
-        insertTemplateOnPage("Hello", "randomTemplate")
+        // logseq.showMainUI();
+        // insertTemplateOnPage("Hello", "randomTemplate")
+        handleContext();
       },
       
     };
@@ -59,7 +62,8 @@ function main() {
     `,
   });
   logseq.App.onRouteChanged((e) => {
-    handleContext(e);
+    console.log('route changed', e)
+    
   });
 }
 
