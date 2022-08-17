@@ -9,14 +9,14 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@logseq/libs": "^0.0.6",
+    "@logseq/libs": "^0.0.7",
     "axios": "^0.27.2",
     "logseq-dateutils": "^0.0.21",
-    "pnpm": "^7.2.1",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "pnpm": "^7.9.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-tooltip": "^4.2.21",
-    "react-use": "^17.3.2",
+    "react-use": "^17.4.0",
     "sherlockjs": "^1.4.2"
   },
   "devDependencies": {
@@ -42,7 +42,7 @@
     "windicss": "3.5.1"
   },
   "logseq": {
-    "id": "_pengx17-logseq-template-react",
+    "id": "logseq-discourse-graphs",
     "icon": "./logo.svg"
   }
 }

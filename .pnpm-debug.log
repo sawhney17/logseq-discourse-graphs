@@ -1,0 +1,23 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 info pnpm": {
+    "err": {
+      "name": "Error",
+      "message": "not found: sipnmpm",
+      "code": "ENOENT",
+      "stack": "Error: not found: sipnmpm\n    at getNotFoundError (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:41688:51)\n    at Function.whichSync [as sync] (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:41765:13)\n    at getCommandAbsolutePathSync (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:43330:44)\n    at default_1 (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:43339:32)\n    at /usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:172190:39"
+    }
+  },
+  "2 error pnpm": {
+    "code": "ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL",
+    "prefix": "/Users/aryansawhney/logseq-discourse-graphs",
+    "err": {
+      "name": "pnpm",
+      "message": "not found: sipnmpm",
+      "code": "ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL",
+      "stack": "Error: not found: sipnmpm\n    at getNotFoundError (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:41688:51)\n    at Function.whichSync [as sync] (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:41765:13)\n    at getCommandAbsolutePathSync (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:43330:44)\n    at default_1 (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:43339:32)\n    at /usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:172190:39"
+    }
+  }
+}
