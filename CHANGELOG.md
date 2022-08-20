@@ -1,3 +1,13 @@
+# 1.0.0 (2022-08-20)
+
+
+### Bug Fixes
+
+* **ci:** add license ([185eb87](https://github.com/sawhney17/logseq-discourse-graphs/commit/185eb872ef19243c1fe2a7b4a8145e1daca80766))
+* **ci:** broken ci ([73abeef](https://github.com/sawhney17/logseq-discourse-graphs/commit/73abeefe69343695b473675611bf251fd6a2d14d))
+* **ci:** finally? ([b9c596b](https://github.com/sawhney17/logseq-discourse-graphs/commit/b9c596b112192188019943c8363cd92419c20102))
+* **ci:** make releases semantic ([9294417](https://github.com/sawhney17/logseq-discourse-graphs/commit/9294417c544883bce8320c9aa3f4c964fdddb8e2))
+
 ## [2.1.1](https://github.com/pengx17/logseq-plugin-template-react/compare/v2.1.0...v2.1.1) (2022-03-24)
 
 
