@@ -19,6 +19,7 @@ export async function updateDiscourceCSS(e?:any) {
   }
 }
 
+
 function updateDiscourseCSSclassList(cssQuery:any, cssClass:string) {
   // console.log("DB cssQuery.classList 1", cssQuery.classList)
   cssQuery.classList.remove("lsdsc_*")
