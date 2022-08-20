@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { ReactDOM } from "react";
-import { render } from "react-dom";
-// import DiscourseContextContext from "./discoursContextContext";
-import { returnedQuery, returnQueries } from "./utils";
+// import { ReactDOM } from "react";
+// import { render } from "react-dom";
+// // import DiscourseContextContext from "./discoursContextContext";
+// import { returnedQuery, returnQueries } from "./utils";
 import QueryFormat from "./queryFormat";
 
 class DiscourseContext extends React.Component<
