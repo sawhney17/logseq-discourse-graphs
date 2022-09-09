@@ -11,6 +11,7 @@ import {
 // import { getDiscourseProperties } from "./DiscourseUtils"
 import { stringify } from "querystring";
 import { updateDiscourceCSS } from "./discourceCSS";
+import { handleClosePopup } from "./smartblocks/handleClosePopup";
 
 const relationData = [
   { txt: "Question - (Q)", abbr: "QUE", type: "question" },
@@ -36,21 +37,39 @@ function Popup(props: any) {
   const link = reLink.exec(block.content);
 
   if (!link) {
-    logseq.UI.showMsg("Error: Current block is not a link", "warning")
+    logseq.UI.showMsg("Error: Current block is not a link", "warning");
+    logseq.hideMainUI();
     return;
   } else {
     console.log("Found link:", link);
     // console.log("xy",location)
-    const xloc = `left-${2 * Math.floor(location.x / 20)}`;
-    const yloc = `top-${2 * Math.floor(location.y / 20)}`;
+    // const xloc = `left-${2 * Math.floor(location.x / 20)}`;
+    // const yloc = `top-${2 * Math.floor(location.y / 20)}`;
+
     // console.log(`x: ${xloc} y: ${yloc}`)
+
+    const xloc = `${location.x+40}px`;
+    const yloc = `${location.y + 40}px`;
+    handleClosePopup();
 
     // FIXME This does not work, why?
     // const className = `component absolute ${yloc} ${x loc}  w-40`
-    const className = `component absolute left-20 top-20  w-40`;
+    const className = `component absolute provided-location left-20 top-20  w-40`;
+    logseq.provideStyle(
+      // {
+      // style: 
+      `.provided-location {
+        left: ${xloc};
+        top: ${yloc};
+    }
+    `
+    // ,
+      // key: "location",
+    // }
+    );
     return (
       <div className="relative w-40">
-        <div className={className}>
+        <div className={className} style={{left: xloc, top: yloc}}>
           <div className="px-1 pb-5 shadow-lg rounded-lg bg-gray-100 text-center relative">
             {relationData.map(function (rel) {
               return (
