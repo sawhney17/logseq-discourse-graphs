@@ -17,7 +17,7 @@ const relationData = [
   { txt: "Question - (Q)", abbr: "QUE", type: "question" },
   { txt: "Claim - (C)", abbr: "CLM", type: "claim" },
   { txt: "Evidence - (E)", abbr: "EVD", type: "evidence" },
-  { txt: "Excerpt - (E)", abbr: "EXC", type: "excerpt" },
+  { txt: "Excerpt - (Ex)", abbr: "EXC", type: "excerpt" },
   { txt: "Author - (A)", abbr: "AUT", type: "author" },
   { txt: "Source - (S)", abbr: "SRC", type: "source" },
 ];
