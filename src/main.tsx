@@ -14,6 +14,19 @@ import Popup, { showDiscoursePopup } from "./Popup";
 const css = (t, ...args) => String.raw(t, ...args);
 
 const pluginId = PL.id;
+const callback = async function(mutationsList, observer) {
+  for(const mutation of mutationsList) {
+      if (mutation.type === 'childList' && mutation.removedNodes.length > 0 && mutation.removedNodes[0].className === 'editor-inner block-editor') {
+        const uuid = mutation.removedNodes[0].firstElementChild.id.split("edit-block-2-")[1];
+        const currentBlock = await logseq.App.getBlock(uuid)
+        // logseq.UI.showMsg(`[:div [:div "Exit editing mode for uuid: ${uuid}"] [:div "Content"] [:div "${currentBlock.content}"]]`)
+        console.log(currentBlock)
+        handleContext()    
+    updateDiscourceCSS()
+      }
+  }
+};
+
 
 function main() {
   // console.info(`#${pluginId}: MAIN`);
@@ -113,6 +126,11 @@ function main() {
   //     handleContext()
   //   }, 1000)
   // });
+
+  //@ts-expect-error
+const observer = new top.MutationObserver(callback);
+observer.observe(top.document.getElementById('main-content-container'), { attributes: false, childList: true, subtree: true });
+  
   logseq.App.onRouteChanged((e) => {
     console.log('route changed', e)
     handleContext()    
