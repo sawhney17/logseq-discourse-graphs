@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/sawhney17/logseq-discourse-graphs/compare/v1.0.0...v1.0.1) (2022-08-20)
+
+
+### Bug Fixes
+
+* **ci:** should work ([1779236](https://github.com/sawhney17/logseq-discourse-graphs/commit/1779236a2b65897d98a90cf4aba5b6caace7e84f))
+
 # 1.0.0 (2022-08-20)
 
 
