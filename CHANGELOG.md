@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/sawhney17/logseq-discourse-graphs/compare/v1.0.1...v1.0.2) (2022-09-09)
+
+
+### Bug Fixes
+
+* **css:** Improve reliabilty of css with observer ([05bf25b](https://github.com/sawhney17/logseq-discourse-graphs/commit/05bf25bb827921740b21132bc88c12c23397a04a))
+
 ## [1.0.1](https://github.com/sawhney17/logseq-discourse-graphs/compare/v1.0.0...v1.0.1) (2022-08-20)
 
 
