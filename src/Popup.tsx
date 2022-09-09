@@ -57,7 +57,7 @@ function Popup(props: any) {
     const className = `component absolute provided-location left-20 top-20  w-40`;
     logseq.provideStyle(
       // {
-      // style: 
+      // style:  
       `.provided-location {
         left: ${xloc};
         top: ${yloc};
