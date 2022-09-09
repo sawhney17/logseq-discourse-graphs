@@ -31,7 +31,7 @@ const callback = async function(mutationsList, observer) {
 function main() {
   // console.info(`#${pluginId}: MAIN`);
   // console.log("JHKJHjk")
-  const root = ReactDOM.createRoot(document.getElementById("app")!);
+  
   // // insertTemplateOnPage("Hello", "randomTemplate") // the code to insert a template named randomTemplate onto a page called hello
   
   // root.render(
@@ -170,13 +170,17 @@ observer.observe(top.document.getElementById('main-content-container'), { attrib
       const currBlock = await logseq.Editor.getCurrentBlock();
       console.log("DB currBlock", currBlock)
       const blockLocation = await logseq.Editor.queryElementRect(`div[blockid="${currBlock?.uuid}"]`)
-      console.log("DB blockLocation", blockLocation)
-          root.render(
-        <React.StrictMode>
-          {/* @ts-ignore */}
-        <Popup currBlockInfo={[currBlock, blockLocation]} />
-        </React.StrictMode>
-      );
+      const root = ReactDOM.createRoot(document.getElementById("app")!);
+      // console.log("DB blockLocation", blockLocation)
+      setTimeout(
+        ()=>{root.render(
+          <React.StrictMode>
+            {/* @ts-ignore */}
+          <Popup currBlockInfo={[currBlock, blockLocation]} />
+          </React.StrictMode>
+        );}, 1000
+      )
+          
     });
     registerSetDiscourseContext()
 
