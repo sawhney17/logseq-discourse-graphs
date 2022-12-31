@@ -68,7 +68,7 @@ function Popup(props: any) {
     // }
     );
     return (
-      <div className="relative w-40">
+      <div className="relative discourse-popup w-40">
         <div className={className} style={{left: xloc, top: yloc}}>
           <div className="px-1 pb-5 shadow-lg rounded-lg bg-gray-100 text-center relative">
             {relationData.map(function (rel) {
