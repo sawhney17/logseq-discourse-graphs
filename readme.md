@@ -1,8 +1,4 @@
-# Logseq Plugin Template React
+# Logseq Discourse Graphs
 
-## Features
-
-- plug & play boilerplate with properly defined GitHub action defaults
-- develop with HMR, empowered by lightning fast Vite ⚡ with [vite-logseq-plugin](https://github.com/pengx17/vite-plugin-logseq)
-- windicss for styling
-- pnpm
+## Credits
+- Development of this plugin has been financially supported by the [Global Partnership Network](https://www.uni-kassel.de/forschung/global-partnership-network/home) at the University of Kassel
