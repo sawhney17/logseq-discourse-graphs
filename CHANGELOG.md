@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/sawhney17/logseq-discourse-graphs/compare/v1.2.0...v1.2.1) (2023-01-03)
+
+
+### Bug Fixes
+
+* **popup:** new release ([5c9d2f7](https://github.com/sawhney17/logseq-discourse-graphs/commit/5c9d2f76adf69d9f7bd80f2ce47fd59a3f178842))
+
 # [1.2.0](https://github.com/sawhney17/logseq-discourse-graphs/compare/v1.1.2...v1.2.0) (2022-09-15)
 
 
