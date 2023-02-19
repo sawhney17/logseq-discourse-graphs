@@ -9,31 +9,35 @@ import { logseq as PL } from "../package.json";
 import { handleContext } from "./utils";
 import { updateDiscourceCSS } from "./discourceCSS";
 import Popup, { showDiscoursePopup } from "./Popup";
-
+import getSamePageAPI from "@samepage/external/getSamePageAPI";
 
 const css = (t, ...args) => String.raw(t, ...args);
 
 const pluginId = PL.id;
-const callback = async function(mutationsList, observer) {
-  for(const mutation of mutationsList) {
-      if (mutation.type === 'childList' && mutation.removedNodes.length > 0 && mutation.removedNodes[0].className === 'editor-inner block-editor') {
-        const uuid = mutation.removedNodes[0].firstElementChild.id.split("edit-block-2-")[1];
-        const currentBlock = await logseq.App.getBlock(uuid)
-        // logseq.UI.showMsg(`[:div [:div "Exit editing mode for uuid: ${uuid}"] [:div "Content"] [:div "${currentBlock.content}"]]`)
-        console.log(currentBlock)
-        handleContext()    
-    updateDiscourceCSS()
-      }
+const callback = async function (mutationsList, observer) {
+  for (const mutation of mutationsList) {
+    if (
+      mutation.type === "childList" &&
+      mutation.removedNodes.length > 0 &&
+      mutation.removedNodes[0].className === "editor-inner block-editor"
+    ) {
+      const uuid =
+        mutation.removedNodes[0].firstElementChild.id.split("edit-block-2-")[1];
+      const currentBlock = await logseq.App.getBlock(uuid);
+      // logseq.UI.showMsg(`[:div [:div "Exit editing mode for uuid: ${uuid}"] [:div "Content"] [:div "${currentBlock.content}"]]`)
+      console.log(currentBlock);
+      handleContext();
+      updateDiscourceCSS();
+    }
   }
 };
 
-
-function main() {
+async function main() {
   // console.info(`#${pluginId}: MAIN`);
   // console.log("JHKJHjk")
-  
+
   // // insertTemplateOnPage("Hello", "randomTemplate") // the code to insert a template named randomTemplate onto a page called hello
-  
+
   // root.render(
   //   <React.StrictMode>
   //     <App />
@@ -47,7 +51,6 @@ function main() {
         // insertTemplateOnPage("Hello", "randomTemplate")
         handleContext();
       },
-      
     };
   }
 
@@ -59,61 +62,62 @@ function main() {
   const openIconName = "template-plugin-open";
 
   logseq.provideStyle(css`
-  .${openIconName} {
-    opacity: 0.55;
-    font-size: 20px;
-    margin-top: 4px;
-  }
+    .${openIconName} {
+      opacity: 0.55;
+      font-size: 20px;
+      margin-top: 4px;
+    }
 
-  .${openIconName}:hover {
-    opacity: 0.9;
-  }
-  :is(.lsdsc_question, .lsdsc_claim, .lsdsc_evidence) {
-    /* background-color: pink !important; */
-    background: var(--ls-primary-background-color);
-    background-size: 100%;
-    color: var(--ls-primary-text-color);
-    padding: 2px 5px 2px 5px;
-    font-size: 13px;
-    line-height: 1em;
-    font-weight: 500;
-    border-radius: 5px 5px 5px 5px;
-    border-style: solid;
-    border-color: var(--ls-link-ref-text-color);
-    border-width: thin;
-    position:relative;
-    box-shadow: 0px 1px 3px -1px var(--ls-secondary-text-color), 0px -1px 5px  var(--ls-secondary-background-color);
-  }
-  :is(.lsdsc_question, .lsdsc_claim, .lsdsc_evidence) .bracket  {
-    display: none;
-  }
-  :is(.lsdsc_question, .lsdsc_claim, .lsdsc_evidence)::before {
+    .${openIconName}:hover {
+      opacity: 0.9;
+    }
+    :is(.lsdsc_question, .lsdsc_claim, .lsdsc_evidence) {
+      /* background-color: pink !important; */
+      background: var(--ls-primary-background-color);
+      background-size: 100%;
+      color: var(--ls-primary-text-color);
+      padding: 2px 5px 2px 5px;
+      font-size: 13px;
+      line-height: 1em;
+      font-weight: 500;
+      border-radius: 5px 5px 5px 5px;
+      border-style: solid;
+      border-color: var(--ls-link-ref-text-color);
+      border-width: thin;
+      position: relative;
+      box-shadow: 0px 1px 3px -1px var(--ls-secondary-text-color),
+        0px -1px 5px var(--ls-secondary-background-color);
+    }
+    :is(.lsdsc_question, .lsdsc_claim, .lsdsc_evidence) .bracket {
+      display: none;
+    }
+    :is(.lsdsc_question, .lsdsc_claim, .lsdsc_evidence)::before {
       width: 1em;
       display: inline-block;
       margin-right: 0.3em;
-  }
-  
-  .lsdsc_question {
+    }
+
+    .lsdsc_question {
       background-color: rgb(248, 184, 35) !important;
-  }
-  .lsdsc_question::before {
-      content: '❓';
-  }
-  
-  .lsdsc_evidence {
+    }
+    .lsdsc_question::before {
+      content: "❓";
+    }
+
+    .lsdsc_evidence {
       background-color: rgb(187, 207, 207) !important;
-  }
-  .lsdsc_evidence::before {
-      content: '🔎';
-  }
-  
-  .lsdsc_claim {
+    }
+    .lsdsc_evidence::before {
+      content: "🔎";
+    }
+
+    .lsdsc_claim {
       background-color: rgb(236, 245, 217) !important;
-  }
-  .lsdsc_claim::before {
-      content: '📢';
-  }
-`);
+    }
+    .lsdsc_claim::before {
+      content: "📢";
+    }
+  `);
 
   logseq.App.registerUIItem("toolbar", {
     key: openIconName,
@@ -128,13 +132,17 @@ function main() {
   // });
 
   //@ts-expect-error
-const observer = new top.MutationObserver(callback);
-observer.observe(top.document.getElementById('main-content-container'), { attributes: false, childList: true, subtree: true });
-  
+  const observer = new top.MutationObserver(callback);
+  observer.observe(top.document.getElementById("main-content-container"), {
+    attributes: false,
+    childList: true,
+    subtree: true,
+  });
+
   logseq.App.onRouteChanged((e) => {
-    console.log('route changed', e)
-    handleContext()    
-    updateDiscourceCSS()
+    console.log("route changed", e);
+    handleContext();
+    updateDiscourceCSS();
   });
 
   // const registerShowDiscourseContext = () => logseq.App.registerCommandPalette(
@@ -149,52 +157,93 @@ observer.observe(top.document.getElementById('main-content-container'), { attrib
   //   async () => { showDiscoursePopup() });
   // registerShowDiscourseContext()
 
-  logseq.DB.onChanged((e) => {updateDiscourceCSS()})
-  const registerSetDiscourseContext = () => logseq.App.registerCommandPalette(
-    {
-      key: `discourse_setDiscourseContext`,
-      label: `Set Discourse Context`,
-      keybinding: {
-        mode: 'global',
-        binding: 'mod+shift+l'
+  logseq.DB.onChanged((e) => {
+    updateDiscourceCSS();
+  });
+  const registerSetDiscourseContext = () =>
+    logseq.App.registerCommandPalette(
+      {
+        key: `discourse_setDiscourseContext`,
+        label: `Set Discourse Context`,
+        keybinding: {
+          mode: "global",
+          binding: "mod+shift+l",
+        },
       },
-    },
-    async () => {
-      const isEditing = await logseq.Editor.checkEditing();
-      if (!isEditing) {
-        logseq.UI.showMsg("Please edit (not just select) a block first.");
-        return;
+      async () => {
+        const isEditing = await logseq.Editor.checkEditing();
+        if (!isEditing) {
+          logseq.UI.showMsg("Please edit (not just select) a block first.");
+          return;
+        }
+        logseq.showMainUI();
+        await logseq.Editor.exitEditingMode(true);
+        const currBlock = await logseq.Editor.getCurrentBlock();
+        console.log("DB currBlock", currBlock);
+        const blockLocation = await logseq.Editor.queryElementRect(
+          `div[blockid="${currBlock?.uuid}"]`
+        );
+        const root = ReactDOM.createRoot(document.getElementById("app")!);
+        // console.log("DB blockLocation", blockLocation)
+        setTimeout(() => {
+          root.render(
+            <React.StrictMode>
+              {/* @ts-ignore */}
+              <Popup currBlockInfo={[currBlock, blockLocation]} />
+            </React.StrictMode>
+          );
+        }, 1000);
       }
-      logseq.showMainUI();
-      await logseq.Editor.exitEditingMode(true)
-      const currBlock = await logseq.Editor.getCurrentBlock();
-      console.log("DB currBlock", currBlock)
-      const blockLocation = await logseq.Editor.queryElementRect(`div[blockid="${currBlock?.uuid}"]`)
-      const root = ReactDOM.createRoot(document.getElementById("app")!);
-      // console.log("DB blockLocation", blockLocation)
-      setTimeout(
-        ()=>{root.render(
-          <React.StrictMode>
-            {/* @ts-ignore */}
-          <Popup currBlockInfo={[currBlock, blockLocation]} />
-          </React.StrictMode>
-        );}, 1000
-      )
-          
-    });
-    registerSetDiscourseContext()
+    );
+  registerSetDiscourseContext();
 
-  const registerupdateDiscourceCSS = () => logseq.App.registerCommandPalette(
-    {
-      key: `discoursse_updateDiscourceCSS`,
-      label: `Update Discource CSS`,
-      keybinding: {
-        mode: 'global',
-        binding: 'mod+shift+;'
+  const registerupdateDiscourceCSS = () =>
+    logseq.App.registerCommandPalette(
+      {
+        key: `discoursse_updateDiscourceCSS`,
+        label: `Update Discource CSS`,
+        keybinding: {
+          mode: "global",
+          binding: "mod+shift+;",
+        },
       },
-    },
-    async () => { updateDiscourceCSS() });
-  registerupdateDiscourceCSS()
+      async () => {
+        updateDiscourceCSS();
+      }
+    );
+  registerupdateDiscourceCSS();
+  console.log("get api");
+  const samepageUnloader = await getSamePageAPI().then(
+    ({ addNotebookRequestListener }) => {
+      console.log("nb rq lst");
+      const unloadListener = addNotebookRequestListener(
+        async ({ request, sendResponse }) => {
+          console.log("I got a request!");
+          if (request.hello === "world") {
+            sendResponse({ goodbye: new Date().valueOf() });
+          } else if (request.method === "FIRE_QUERY") {
+            sendResponse({
+              results: await logseq.DB.datascriptQuery(
+                `[:find (pull ?p [*]) :where [?r :block/original-name "Project"] [?b :block/page ?p] [?b :block/refs ?r]]`
+              ).then((results) =>
+                results.map((r) => ({
+                  text: r[0]["original-name"],
+                  uid: r[0]["uuid"],
+                }))
+              ),
+            });
+          } else {
+            sendResponse(undefined);
+          }
+        }
+      );
+      return unloadListener;
+    }
+  );
+  console.log("loaded!");
+  logseq.beforeunload(async () => {
+    samepageUnloader();
+  });
 }
 
 logseq.ready(main).catch(console.error);

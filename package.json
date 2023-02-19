@@ -4,12 +4,13 @@
   "main": "dist/index.html",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preinstall": "npx only-allow pnpm"
+    "start": "vite",
+    "build": "tsc && vite build"
   },
   "license": "MIT",
   "dependencies": {
     "@logseq/libs": "^0.0.7",
+    "@samepage/external": "^0.42.2",
     "axios": "^0.27.2",
     "logseq-dateutils": "^0.0.21",
     "pnpm": "^7.9.0",
