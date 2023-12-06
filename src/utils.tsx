@@ -76,7 +76,7 @@ export const returnQueries = async () => {
       [?block :block/path-refs ?qref]
       [?qref :block/name "<%currentPage%>"]
       [?block :block/path-refs ?stanceref]
-      [?stanceref :block/name "opposed by"]	    
+      [?stanceref :block/name "opposes"]	    
        ]`,
     },
     {
@@ -89,7 +89,7 @@ export const returnQueries = async () => {
       [?block :block/path-refs ?qref]
       [?qref :block/name "<%currentPage%>"]
       [?block :block/path-refs ?stanceref]
-      [?stanceref :block/name "supported by"]	    
+      [?stanceref :block/name "supports"]	    
        ]`,
     },
     {
@@ -102,7 +102,7 @@ export const returnQueries = async () => {
       [?block :block/path-refs ?qref]
         [?qref :block/name <%currentpage%>]
       [?block :block/path-refs ?parentref]
-        [?parentref :block/name "supported by"]	    
+        [?parentref :block/name "supports"]	    
          ]`,
     },
     {
@@ -115,7 +115,7 @@ export const returnQueries = async () => {
       [?block :block/path-refs ?qref]
         [?qref :block/name <%currentpage%>]
       [?block :block/path-refs ?parentref]
-        [?parentref :block/name "opposed by"]	    
+        [?parentref :block/name "opposes"]	    
          ]`,
     },
     {
@@ -128,7 +128,7 @@ export const returnQueries = async () => {
       [?block :block/path-refs ?qref]
         [?qref :block/name <%currentpage%>]
       [?block :block/path-refs ?parentref]
-        [?parentref :block/name "opposed by"]	    
+        [?parentref :block/name "opposes"]	    
          ]`,
     },
     {
