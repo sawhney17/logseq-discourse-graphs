@@ -156,7 +156,7 @@ observer.observe(top.document.getElementById('main-content-container'), { attrib
       label: `Set Discourse Context`,
       keybinding: {
         mode: 'global',
-        binding: 'mod+shift+l'
+        binding: 'mod+shift+k'
       },
     },
     async () => {
@@ -183,7 +183,7 @@ observer.observe(top.document.getElementById('main-content-container'), { attrib
           
     });
     registerSetDiscourseContext()
-
+    
   const registerupdateDiscourceCSS = () => logseq.App.registerCommandPalette(
     {
       key: `discoursse_updateDiscourceCSS`,
